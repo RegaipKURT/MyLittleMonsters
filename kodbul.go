@@ -14,14 +14,14 @@ func main() {
 		cmd := exec.Command("curl", "cht.sh")
 		res, err := cmd.Output()
 		if err != nil {
-			log.Fatal(err)
+			fmt.Println(err.Error())
 		}
 		fmt.Println(string(res))
 
 		cmd2 := exec.Command("tldr", "-h")
 		res, err = cmd2.Output()
 		if err != nil {
-			log.Fatal(err)
+			fmt.Println(err.Error())
 		}
 		fmt.Println(string(res))
 
