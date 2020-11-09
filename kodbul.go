@@ -14,14 +14,14 @@ func main() {
 		cmd := exec.Command("curl", "cht.sh")
 		res, err := cmd.Output()
 		if err != nil {
-			fmt.Println(err.Error())
+			fmt.Println("cheat.sh error: ", err.Error())
 		}
 		fmt.Println(string(res))
 
 		cmd2 := exec.Command("tldr", "-h")
 		res, err = cmd2.Output()
 		if err != nil {
-			fmt.Println(err.Error())
+			fmt.Println("tldr error:", err.Error())
 		}
 		fmt.Println(string(res))
 
@@ -41,7 +41,7 @@ func main() {
 			cmd := exec.Command("tldr", os.Args[1])
 			res, err := cmd.Output()
 			if err != nil {
-				log.Fatal(err)
+				fmt.Println("tldr error: ", err.Error())
 			}
 			fmt.Println(string(res))
 		} else {
@@ -50,7 +50,6 @@ func main() {
 			fmt.Println("Kullanım (2): kodbul <bash girdisi>")
 			os.Exit(0)
 		}
-
 	}
 
 	for _, w := range os.Args[2:] {
