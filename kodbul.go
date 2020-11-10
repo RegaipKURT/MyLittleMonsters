@@ -1,7 +1,10 @@
 package main
 
-// Bu program cheat.sh kullanarak aranan bir kod örneğini bulmaya yarar.
-// orjinal program: https://github.com/chubin/cheat.sh
+// Bu program tldr ve cheat.sh kullanarak aranan bir kod örneğini bulmaya yarar.
+// orjinal programlar
+// cheat.sh: https://github.com/chubin/cheat.sh
+// tldr: https://github.com/tldr-pages/tldr
+
 import (
 	"fmt"
 	"log"
