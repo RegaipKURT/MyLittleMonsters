@@ -44,15 +44,19 @@ func main() {
 
 	if len(os.Args[1:]) == 0 {
 		for _, c := range kurlar.Tarih_Date[:len(kurlar.Tarih_Date)-1] {
-			fmt.Println(c.Isim, "("+c.CurrencyName+")", "-  Alış:",
-				c.ForexBuying, "-Satış:", c.ForexSelling)
+			fmt.Println(c.Isim, "("+c.CurrencyName+")", " Alış:",
+				c.ForexBuying, "- Satış:", c.ForexSelling)
+		}
+		for _, c := range kurlar.Tarih_Date[len(kurlar.Tarih_Date)-1 : len(kurlar.Tarih_Date)] {
+			fmt.Println("Special Drawing Rights (SDR)", " Alış:",
+				c.ForexBuying, "- Satış:", c.ForexSelling)
 		}
 	} else {
 		for _, isim := range os.Args[1:] {
 			for _, c := range kurlar.Tarih_Date {
 				if strings.ToUpper(isim[:2]) == c.Isim[:2] || strings.ToUpper(isim[:2]) == c.CurrencyName[:2] {
-					fmt.Println(c.Isim, "("+c.CurrencyName+")", "-  Alış:",
-						c.ForexBuying, "-Satış:", c.ForexSelling)
+					fmt.Println(strings.Replace(c.Isim, "  ", "", -1), "("+strings.Replace(c.CurrencyName, "  ", "", -1)+")", " Alış:",
+						c.ForexBuying, "- Satış:", c.ForexSelling)
 				}
 			}
 		}
