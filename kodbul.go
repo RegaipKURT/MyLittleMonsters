@@ -1,10 +1,5 @@
 package main
 
-// Bu program tldr ve cheat.sh kullanarak aranan bir kod örneğini bulmaya yarar.
-// orjinal programlar
-// cheat.sh: https://github.com/chubin/cheat.sh
-// tldr: https://github.com/tldr-pages/tldr
-
 import (
 	"fmt"
 	"log"
@@ -12,7 +7,45 @@ import (
 	"os/exec"
 )
 
+var HOME = os.Getenv("HOME")
+
+func firstRun() {
+
+	if _, err := os.Stat(HOME + "/.kodbulConfig"); os.IsNotExist(err) {
+		fmt.Println("Configuration File Not Found!")
+
+		file, err := os.Create(HOME + "/.kodbulConfig")
+		defer file.Close()
+		if err != nil {
+			log.Fatal("Error when creating configuration file: ", err.Error())
+		}
+
+		fmt.Println("Required updates in progress...")
+		cmd := exec.Command("sudo", "apt", "install", "tldr", "curl")
+		res, err := cmd.Output()
+		x := string(res)
+		fmt.Println(x)
+		cmd2 := exec.Command("tldr", "--update")
+		x2, err := cmd2.Output()
+		if err != nil {
+			fmt.Println("An error have raised: ", err.Error())
+		} else {
+			x3 := string(x2)
+			fmt.Println(x3)
+			fmt.Println("Update Successful!")
+		}
+		_, err = file.WriteString("1\n")
+		if err != nil {
+			log.Fatal("Error when writing configuration file: ", err.Error())
+		}
+	} else if err != nil {
+		fmt.Println(err.Error())
+		os.Exit(1)
+	}
+}
+
 func main() {
+	firstRun()
 	if len(os.Args) <= 1 {
 		cmd := exec.Command("curl", "cht.sh")
 		res, err := cmd.Output()
@@ -40,7 +73,7 @@ func main() {
 	var url string
 
 	if len(os.Args) == 2 {
-		if os.Args[1] != "-h" {
+		if os.Args[1] != "-h" || os.Args[1] != "--help" {
 			cmd := exec.Command("tldr", os.Args[1])
 			res, err := cmd.Output()
 			if err != nil {
