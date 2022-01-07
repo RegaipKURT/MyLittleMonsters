@@ -61,10 +61,10 @@ func main() {
 		}
 		fmt.Println(string(res))
 
-		fmt.Println("BU PROGRAM YUKARIDA GÖRÜLEN cht.sh ve tldr PROGRAMLARI ÜZERİNDEN ARAMA YAPAR.\ntldr komutunun yüklenmiş olması gerekir.")
-		fmt.Println("En az bir programlama dili veya parametre belirtin!")
-		fmt.Println("Kullanım (1): kodbul <programlama dili> <aranacak ifadeler>")
-		fmt.Println("Kullanım (2): kodbul <bash girdisi>")
+		fmt.Println("This program searches provided input from tldr and cheat.sh")
+		fmt.Println("At least 1 parameter must be specified!")
+		fmt.Println("Usage (1): kodbul <coding language> <expressions>")
+		fmt.Println("Usage (2): kodbul <bash input>")
 
 		os.Exit(0)
 	}
@@ -81,9 +81,10 @@ func main() {
 			}
 			fmt.Println(string(res))
 		} else {
-			fmt.Println("BU PROGRAM cht.sh ve tldr PROGRAMLARI ÜZERİNDEN ARAMA YAPAR.\ntldr komutunun yüklenmiş olması gerekir.")
-			fmt.Println("\nKullanım (1): kodbul <programlama dili> <aranacak ifadeler>")
-			fmt.Println("Kullanım (2): kodbul <bash girdisi>")
+			fmt.Println("This program searches provided input from tldr and cheat.sh")
+			fmt.Println("At least 1 parameter must be specified!")
+			fmt.Println("Usage (1): kodbul <coding language> <expressions>")
+			fmt.Println("Usage (2): kodbul <bash input>")
 			os.Exit(0)
 		}
 	}
